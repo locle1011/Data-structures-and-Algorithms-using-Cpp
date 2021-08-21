@@ -4,13 +4,21 @@ using namespace std;
 #define abs(x) ((x >= 0) ? (x) : -(x))
 #define eps 1e-8
 
+/* Solve tower of Hanoi problem. */
 void towerOfHanoi(int, int, int, int);
+/* Find nth Fibonacci number. */
 int fib(int);
+/* Find GCD of two numbers. */
 int gcd(int, int);
+/* Find LCM of two numbers. */
 int lcm(int, int);
+/* Calculate n power of base. */
 int pow(int, unsigned int);
+/* Calulate factorial of a non-negative number. */
 int factorial(unsigned int);
+/* Recursively calculate square root of a non-negative number. */
 float findSqrtUntils(double, double, double);
+/* Calculate square root. */
 float sqrt(float);
 
 int main()
@@ -52,6 +60,7 @@ int fib(int n)
 
 int gcd(int a, int b)
 {
+    /* Euclidean algorithm */
     if (b == 0)
     {
         return a;
@@ -70,6 +79,7 @@ int lcm(int a, int b)
 
 int pow(int base, unsigned int power)
 {
+    /* Divide and conquer algorithm */
     if (power == 0)
     {
         return 1;
@@ -96,6 +106,7 @@ int factorial(unsigned int n)
 
 float findSqrtUntils(double n, double lo, double hi)
 {
+    /* Binary search approach */
     double mid = (lo + hi) / 2;
     double mul = mid * mid;
     if (abs(mul - n) < eps)
