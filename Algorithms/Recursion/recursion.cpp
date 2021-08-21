@@ -5,14 +5,15 @@ void towerOfHanoi(int, int, int, int);
 int fib(int);
 int gcd(int, int);
 int lcm(int, int);
-int pow(int, int);
-int factorial(int);
+int pow(int, unsigned int);
+int factorial(unsigned int);
 
 int main()
 {
     // towerOfHanoi(3, 1, 3, 2);
     // cout << fib(6);
-    cout << gcd(2, 3) << " " << lcm(2, 3);
+    // cout << gcd(2, 3) << " " << lcm(2, 3);
+    cout << pow(3, 2) << " " << factorial(5);
 }
 
 void towerOfHanoi(int n, int src, int des, int aux)
@@ -58,4 +59,30 @@ int lcm(int a, int b)
         return 0;
     }
     return (a * b) / gcd(a, b);
+}
+
+int pow(int base, unsigned int power)
+{
+    if (power == 0)
+    {
+        return 1;
+    }
+    int temp = pow(base, power / 2);
+    if (power % 2 == 0)
+    {
+        return temp * temp;
+    }
+    else
+    {
+        return base * temp * temp;
+    }
+}
+
+int factorial(unsigned int n)
+{
+    if (n <= 1)
+    {
+        return 1;
+    }
+    return n * factorial(n - 1);
 }
