@@ -25,10 +25,10 @@ int main()
 {
     // towerOfHanoi(3, 1, 3, 2);
     // cout << fib(6);
-    // cout << gcd(2, 3) << " " << lcm(2, 3);
+    cout << gcd(-2, 3) << " " << lcm(-2, -3);
     // cout << pow(3, 2) << " " << factorial(5);
-    cout.precision(10);
-    cout << sqrt(2);
+    // cout.precision(10);
+    // cout << sqrt(2);
 }
 
 void towerOfHanoi(int n, int src, int des, int aux)
@@ -61,6 +61,8 @@ int fib(int n)
 int gcd(int a, int b)
 {
     /* Euclidean algorithm */
+    a = abs(a);
+    b = abs(b);
     if (b == 0)
     {
         return a;
@@ -74,7 +76,7 @@ int lcm(int a, int b)
     {
         return 0;
     }
-    return (a * b) / gcd(a, b);
+    return abs(a * b) / gcd(a, b);
 }
 
 int pow(int base, unsigned int power)
