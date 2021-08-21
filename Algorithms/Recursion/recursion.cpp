@@ -11,7 +11,8 @@ int factorial(int);
 int main()
 {
     // towerOfHanoi(3, 1, 3, 2);
-    cout << fib(6);
+    // cout << fib(6);
+    cout << gcd(2, 3) << " " << lcm(2, 3);
 }
 
 void towerOfHanoi(int n, int src, int des, int aux)
@@ -39,4 +40,22 @@ int fib(int n)
         return n;
     }
     return fib(n - 1) + fib(n - 2);
+}
+
+int gcd(int a, int b)
+{
+    if (b == 0)
+    {
+        return a;
+    }
+    return gcd(b, a % b);
+}
+
+int lcm(int a, int b)
+{
+    if (a == 0 || b == 0)
+    {
+        return 0;
+    }
+    return (a * b) / gcd(a, b);
 }
