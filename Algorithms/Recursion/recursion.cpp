@@ -10,7 +10,8 @@ int factorial(int);
 
 int main()
 {
-    towerOfHanoi(3, 1, 3, 2);
+    // towerOfHanoi(3, 1, 3, 2);
+    cout << fib(6);
 }
 
 void towerOfHanoi(int n, int src, int des, int aux)
@@ -29,4 +30,13 @@ void towerOfHanoi(int n, int src, int des, int aux)
         // Move n-1 disks from aux to des
         towerOfHanoi(n - 1, aux, des, src);
     }
+}
+
+int fib(int n)
+{
+    if (n <= 1)
+    {
+        return n;
+    }
+    return fib(n - 1) + fib(n - 2);
 }
