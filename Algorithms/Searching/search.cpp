@@ -1,5 +1,8 @@
 #include <iostream>
+#include <cmath>
 using namespace std;
+
+#define min(a, b) ((a < b) ? (a) : (b))
 
 void linearSearch(int *arr, int n, int key)
 {
@@ -60,12 +63,42 @@ void interpolationSearch(int *arr, int n, int key)
     cout << "Not found" << endl;
 }
 
+void jumpSearch(int *arr, int n, int key)
+{
+    int step = sqrt(n);
+    int pos = step;
+    while (arr[min(pos, n) - 1] < key)
+    {
+        pos += step;
+        if (pos >= n + step)
+        {
+            cout << "Not found" << endl;
+            return;
+        }
+    }
+    int lo = (pos > step) ? pos - step : 0;
+    while (arr[pos] > key)
+    {
+        pos--;
+        if (pos < lo)
+        {
+            cout << "Not found" << endl;
+            return;
+        }
+    }
+    if (arr[pos] == key)
+    {
+        cout << "Found at index: " << pos << endl;
+    }
+}
+
 int main()
 {
     int arr[] = {1, 2, 2, 3, 4, 4, 5, 6, 7, 8, 9, 9, 9, 10, 11, 12, 12, 14, 15, 16};
     int n = sizeof(arr) / sizeof(int);
-    int key = 16;
+    int key = 8;
     linearSearch(arr, n, key);
     binarySearch(arr, n, key);
     interpolationSearch(arr, n, key);
+    jumpSearch(arr, n, key);
 }
