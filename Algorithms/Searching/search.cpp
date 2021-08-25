@@ -37,6 +37,35 @@ void binarySearch(int *arr, int n, int key)
     cout << "Not found" << endl;
 }
 
+void interpolationSearch(int *arr, int n, int key)
+{
+    int l = 0, r = n - 1;
+    while (l <= r && key >= arr[l] && key <= arr[r])
+    {
+        int pos = l + (key - arr[l]) * (double(r - l) / (arr[r] - arr[l]));
+        if (arr[pos] == key)
+        {
+            cout << "Found at index: " << pos << endl;
+            return;
+        }
+        else if (arr[pos] > key)
+        {
+            r = pos - 1;
+        }
+        else
+        {
+            l = pos + 1;
+        }
+    }
+    cout << "Not found" << endl;
+}
+
 int main()
 {
+    int arr[] = {1, 2, 2, 3, 4, 4, 5, 6, 7, 8, 9, 9, 9, 10, 11, 12, 12, 14, 15, 16};
+    int n = sizeof(arr) / sizeof(int);
+    int key = 16;
+    linearSearch(arr, n, key);
+    binarySearch(arr, n, key);
+    interpolationSearch(arr, n, key);
 }
