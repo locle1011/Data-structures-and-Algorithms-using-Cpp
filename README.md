@@ -61,6 +61,7 @@ Good luck and have fun with DSA.
   - Counting sort
 - Searching
   - Linear search
+  - Jump search
   - Binary search
   - Interpolation search
 
