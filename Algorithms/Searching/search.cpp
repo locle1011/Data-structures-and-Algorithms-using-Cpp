@@ -4,6 +4,8 @@ using namespace std;
 
 #define min(a, b) ((a < b) ? (a) : (b))
 
+// Find key in arr, print index of key if it is present else print "Not found".
+// Time complexity: O(N).
 void linearSearch(int *arr, int n, int key)
 {
     for (int i = 0; i < n; i++)
@@ -17,6 +19,8 @@ void linearSearch(int *arr, int n, int key)
     cout << "Not found" << endl;
 }
 
+// Find key in arr, print index of key if it is present else print "Not found".
+// Time complexity: O(logN)
 void binarySearch(int *arr, int n, int key)
 {
     int l = 0, r = n - 1;
@@ -31,18 +35,22 @@ void binarySearch(int *arr, int n, int key)
         {
             r = mid - 1;
         }
-        else
+        else // arr[mid]==key
         {
             cout << "Found at index: " << mid << endl;
             return;
         }
     }
+    // We reach here when key is not in arr.
     cout << "Not found" << endl;
 }
 
+// Find key in arr, print index of key if it is present else print "Not found".
+// Time complexity: O(log(logN))
 void interpolationSearch(int *arr, int n, int key)
 {
     int l = 0, r = n - 1;
+    // If key is in arr, it must be in range defined by corner values
     while (l <= r && key >= arr[l] && key <= arr[r])
     {
         int pos = l + (key - arr[l]) * (double(r - l) / (arr[r] - arr[l]));
@@ -55,7 +63,7 @@ void interpolationSearch(int *arr, int n, int key)
         {
             r = pos - 1;
         }
-        else
+        else // arr[pos] < key
         {
             l = pos + 1;
         }
@@ -63,10 +71,15 @@ void interpolationSearch(int *arr, int n, int key)
     cout << "Not found" << endl;
 }
 
+// Find key in arr, print index of key if it is present else print "Not found".
+// Time complexity: O(sqrt(N))
 void jumpSearch(int *arr, int n, int key)
 {
+    // Find step to jump
     int step = sqrt(n);
+    // pos-1 is the last index of first block
     int pos = step;
+    // Find the block where key is in
     while (arr[min(pos, n) - 1] < key)
     {
         pos += step;
@@ -76,7 +89,9 @@ void jumpSearch(int *arr, int n, int key)
             return;
         }
     }
+    // lo is the first index of the block we found
     int lo = (pos > step) ? pos - step : 0;
+    // Linear search until we find key or arr[pos]<key
     while (arr[pos] > key)
     {
         pos--;
@@ -89,6 +104,10 @@ void jumpSearch(int *arr, int n, int key)
     if (arr[pos] == key)
     {
         cout << "Found at index: " << pos << endl;
+    }
+    else // arr[pos]<key
+    {
+        cout << "Not found" << endl;
     }
 }
 
