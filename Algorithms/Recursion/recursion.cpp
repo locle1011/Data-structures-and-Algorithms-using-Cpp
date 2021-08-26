@@ -8,6 +8,8 @@ using namespace std;
 void towerOfHanoi(int, int, int, int);
 /* Find nth Fibonacci number. */
 int fib(int);
+/* Recursively calculate GCD of two numbers. */
+int gcdUntil(unsigned int, unsigned int);
 /* Find GCD of two numbers. */
 int gcd(int, int);
 /* Find LCM of two numbers. */
@@ -58,16 +60,21 @@ int fib(int n)
     return fib(n - 1) + fib(n - 2);
 }
 
+int gcdUntil(unsigned int a, unsigned int b)
+{
+    if (b == 0)
+    {
+        return a;
+    }
+    return gcdUntil(b, a % b);
+}
+
 int gcd(int a, int b)
 {
     /* Euclidean algorithm */
     a = abs(a);
     b = abs(b);
-    if (b == 0)
-    {
-        return a;
-    }
-    return gcd(b, a % b);
+    return gcdUntil(a, b);
 }
 
 int lcm(int a, int b)
@@ -76,7 +83,9 @@ int lcm(int a, int b)
     {
         return 0;
     }
-    return abs(a * b) / gcd(a, b);
+    a = abs(a);
+    b = abs(b);
+    return b / gcdUntil(a, b) * a; // Equal to (a*b)/gcd(a,b)
 }
 
 int pow(int base, unsigned int power)
