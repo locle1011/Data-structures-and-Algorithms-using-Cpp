@@ -21,6 +21,7 @@ Good luck and have fun with DSA.
   - Implementation using Array
   - Implementation using Linked List
 - Tree
+  - Heap
   - Binary Tree
   - Binary Search Tree
   - AVL Tree
